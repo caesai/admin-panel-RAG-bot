@@ -69,6 +69,12 @@ npm run preview
 
 ## Docker
 
+### Требования
+
+- Docker Engine 20.10+
+- Docker Compose 2.0+ (опционально)
+- Node.js 20+ встроен в образ
+
 ### Сборка и запуск с Docker
 
 ```bash
