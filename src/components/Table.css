@@ -1,0 +1,362 @@
+.table-container {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 24px;
+  overflow: hidden;
+  background-color: #FFFFFF;
+  box-sizing: border-box;
+}
+
+.table-header {
+  background-color: #FFFFFF;
+}
+
+.table-header-row {
+  display: grid;
+  gap: 0;
+  padding: 0;
+  border-bottom: 1px solid #F5F7FA;
+  min-height: 18px;
+  padding-bottom: 12px;
+  padding-top: 12px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+
+.table-header-row.requests {
+  grid-template-columns: minmax(100px, 104px) minmax(180px, 191px) minmax(150px, 176px) minmax(200px, 250px) minmax(300px, 1fr);
+}
+
+.table-header-row.confidential {
+  grid-template-columns: minmax(143px, 191px) minmax(250px, 250px) minmax(300px, 1fr);
+}
+
+.table-header-row.users {
+  grid-template-columns: minmax(150px, 200px) minmax(150px, 200px) minmax(200px, 280px) minmax(200px, 300px);
+}
+
+.table-header-row.managers {
+  grid-template-columns: minmax(250px, 300px) minmax(200px, 250px) minmax(300px, 400px);
+}
+
+.table-header-row.manager-changes {
+  grid-template-columns: minmax(180px, 191px) minmax(200px, 250px) minmax(220px, 253px) minmax(300px, 1fr);
+}
+
+.table-header-row.telegram-users {
+  grid-template-columns: minmax(150px, 200px) minmax(150px, 200px) minmax(200px, 280px) minmax(200px, 280px);
+}
+
+.table-row.telegram-users {
+  grid-template-columns: minmax(150px, 200px) minmax(150px, 200px) minmax(200px, 280px) minmax(200px, 280px);
+}
+
+.table-cell {
+  padding: 8px 12px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.2em;
+  letter-spacing: -0.02em;
+  color: #71747A;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.table-cell.header {
+  color: #4B4D52;
+  font-weight: 500;
+  padding-bottom: 12px;
+  padding-top: 0;
+  padding-left: 12px;
+  padding-right: 12px;
+  white-space: nowrap;
+}
+
+/* Выравнивание для таблицы requests (Запросы пользователей) */
+.table-header-row.requests .table-cell.header:first-child {
+  text-align: left;
+}
+
+.table-header-row.requests .table-cell.header:not(:first-child):not(:last-child) {
+  text-align: center;
+}
+
+.table-header-row.requests .table-cell.header:last-child {
+  text-align: right;
+}
+
+.table-row.requests .table-cell:first-child {
+  text-align: left;
+}
+
+.table-row.requests .table-cell:not(:first-child):not(:last-child) {
+  text-align: center;
+}
+
+.table-row.requests .table-cell:last-child {
+  text-align: right;
+}
+
+/* Выравнивание для таблицы confidential (Срабатывания конфиденциально) */
+.table-header-row.confidential .table-cell.header:first-child {
+  text-align: left;
+}
+
+.table-header-row.confidential .table-cell.header:not(:first-child):not(:last-child) {
+  text-align: center;
+}
+
+.table-header-row.confidential .table-cell.header:last-child {
+  text-align: right;
+}
+
+.table-row.confidential .table-cell:first-child {
+  text-align: left;
+}
+
+.table-row.confidential .table-cell:not(:first-child):not(:last-child) {
+  text-align: center;
+}
+
+.table-row.confidential .table-cell:last-child {
+  text-align: right;
+}
+
+/* Выравнивание для таблицы manager-changes (Изменения менеджеров) */
+.table-header-row.manager-changes .table-cell.header:first-child {
+  text-align: left;
+}
+
+.table-header-row.manager-changes .table-cell.header:not(:first-child):not(:last-child) {
+  text-align: center;
+}
+
+.table-header-row.manager-changes .table-cell.header:last-child {
+  text-align: right;
+}
+
+.table-row.manager-changes .table-cell:first-child {
+  text-align: left;
+}
+
+.table-row.manager-changes .table-cell:not(:first-child):not(:last-child) {
+  text-align: center;
+}
+
+.table-row.manager-changes .table-cell:last-child {
+  text-align: right;
+}
+
+/* Выравнивание для таблицы telegram-users (Пользователи ТГ) */
+.table-header-row.telegram-users .table-cell.header:first-child {
+  text-align: left;
+  padding-left: 0;
+}
+
+.table-header-row.telegram-users .table-cell.header:not(:first-child):not(:last-child) {
+  text-align: center;
+}
+
+.table-header-row.telegram-users .table-cell.header:last-child {
+  text-align: right;
+  padding-right: 0;
+}
+
+.table-row.telegram-users .table-cell:first-child {
+  text-align: left;
+  padding-left: 0;
+}
+
+.table-row.telegram-users .table-cell:not(:first-child):not(:last-child) {
+  text-align: center;
+}
+
+.table-row.telegram-users .table-cell:last-child {
+  text-align: right;
+  padding-right: 0;
+}
+
+.table-cell.text-request {
+  text-align: right;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.table-body {
+  background-color: #FFFFFF;
+}
+
+.table-row {
+  display: grid;
+  gap: 0;
+  padding: 0;
+  padding-left: 24px;
+  padding-right: 24px;
+  border-bottom: 1px solid #F5F7FA;
+  min-height: 48px;
+  align-items: center;
+}
+
+.table-row.requests {
+  grid-template-columns: minmax(100px, 104px) minmax(180px, 191px) minmax(150px, 176px) minmax(200px, 250px) minmax(300px, 1fr);
+}
+
+.table-row.confidential {
+  grid-template-columns: minmax(143px, 191px) minmax(250px, 250px) minmax(300px, 1fr);
+}
+
+.table-row.users {
+  grid-template-columns: minmax(150px, 200px) minmax(150px, 200px) minmax(200px, 280px) minmax(200px, 300px);
+}
+
+.table-row.managers {
+  grid-template-columns: minmax(250px, 300px) minmax(200px, 250px) minmax(300px, 400px);
+}
+
+.table-row.manager-changes {
+  grid-template-columns: minmax(180px, 191px) minmax(200px, 250px) minmax(220px, 253px) minmax(300px, 1fr);
+}
+
+.table-row.even {
+  background-color: #F5F7FA;
+}
+
+.table-row .table-cell {
+  color: #71747A;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.2em;
+  letter-spacing: -0.02em;
+  padding: 8px 12px;
+  overflow: visible;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.table-row .table-cell.role-cell,
+.table-row .table-cell.restaurant-cell {
+  overflow: visible;
+  white-space: normal;
+}
+
+
+.table-header-footer {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #F5F7FA;
+}
+
+.table-header-footer .table-header-row {
+  border-bottom: none;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.table-header-footer .table-header-row.requests .table-cell.header:first-child {
+  text-align: left;
+}
+
+.table-header-footer .table-header-row.requests .table-cell.header:not(:first-child):not(:last-child) {
+  text-align: center;
+}
+
+.table-header-footer .table-header-row.requests .table-cell.header:last-child {
+  text-align: right;
+}
+
+.table-header-footer .table-header-row.confidential .table-cell.header:first-child {
+  text-align: left;
+}
+
+.table-header-footer .table-header-row.confidential .table-cell.header:not(:first-child):not(:last-child) {
+  text-align: center;
+}
+
+.table-header-footer .table-header-row.confidential .table-cell.header:last-child {
+  text-align: right;
+}
+
+.table-header-footer .table-header-row.manager-changes .table-cell.header:first-child {
+  text-align: left;
+}
+
+.table-header-footer .table-header-row.manager-changes .table-cell.header:not(:first-child):not(:last-child) {
+  text-align: center;
+}
+
+.table-header-footer .table-header-row.manager-changes .table-cell.header:last-child {
+  text-align: right;
+}
+
+.table-header-footer .table-header-row.telegram-users .table-cell.header:first-child {
+  text-align: left;
+  padding-left: 0;
+}
+
+.table-header-footer .table-header-row.telegram-users .table-cell.header:not(:first-child):not(:last-child) {
+  text-align: center;
+}
+
+.table-header-footer .table-header-row.telegram-users .table-cell.header:last-child {
+  text-align: right;
+  padding-right: 0;
+}
+
+.table-row .table-cell.text-request {
+  text-align: right;
+}
+
+.table-row.telegram-users .table-cell.role-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 12px;
+  overflow: visible;
+}
+
+.table-row.telegram-users .table-cell.restaurant-cell {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 8px 12px;
+  overflow: visible;
+}
+
+.table-empty {
+  padding: 32px;
+  text-align: center;
+  color: #71747A;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+}
+
+.role-select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px solid #F5F7FA;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 0.9em;
+  letter-spacing: -0.04em;
+  color: #71747A;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.role-select:focus {
+  outline: none;
+  border-color: #A80000;
+}
+
+.role-select:hover {
+  border-color: #A80000;
+}
+

@@ -1,0 +1,18 @@
+
+Port 3000 is in use, trying another one...
+
+  VITE v7.1.12  ready in 103 ms
+
+  ➜  Local:   http://localhost:3001/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+11:40:15 PM [vite] (client) hmr update /src/pages/Logs.tsx
+11:40:26 PM [vite] (client) hmr update /src/pages/Logs.tsx (x2)
+11:40:29 PM [vite] (client) hmr update /src/pages/Logs.tsx (x3)
+11:40:33 PM [vite] (client) hmr update /src/pages/Managers.tsx
+11:40:37 PM [vite] (client) hmr update /src/pages/Users.tsx
+11:40:39 PM [vite] (client) hmr update /src/contexts/AuthContext.tsx
+11:42:21 PM [vite] (client) hmr update /src/pages/Logs.tsx
+11:42:21 PM [vite] (client) hmr update /src/pages/Managers.tsx
+11:42:21 PM [vite] (client) hmr update /src/pages/Users.tsx
+11:42:21 PM [vite] (client) hmr update /src/contexts/AuthContext.tsx

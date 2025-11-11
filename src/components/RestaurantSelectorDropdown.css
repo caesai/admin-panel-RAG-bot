@@ -1,0 +1,148 @@
+.restaurant-selector-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+  margin-left: auto;
+  min-width: 200px;
+}
+
+.restaurant-selector-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  width: 100%;
+  min-width: 160px;
+  border: 1px solid #F5F7FA;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.2em;
+  letter-spacing: -0.02em;
+  color: #71747A;
+  transition: all 0.2s;
+}
+
+.restaurant-selector-button:hover {
+  border-color: #A80000;
+}
+
+.restaurant-selector-arrow {
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.restaurant-selector-arrow.open {
+  transform: rotate(180deg);
+}
+
+.restaurant-selector-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.24);
+  z-index: 998;
+}
+
+.restaurant-selector-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px;
+  z-index: 999;
+  min-width: 440px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+}
+
+.restaurant-selector-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 24px;
+}
+
+.restaurant-selector-modal-title {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.2em;
+  letter-spacing: -0.02em;
+  color: #1D1E1F;
+  margin: 0;
+}
+
+.restaurant-selector-modal-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.restaurant-selector-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.restaurant-selector-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.2em;
+  letter-spacing: -0.02em;
+  color: #71747A;
+  width: 100%;
+  text-align: left;
+  transition: color 0.2s;
+}
+
+.restaurant-selector-item:hover {
+  color: #4B4D52;
+}
+
+.restaurant-checkbox {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #1D1E1F;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.restaurant-checkbox.checked {
+  background-color: #A80000;
+  border-color: #A80000;
+}
+
+.restaurant-divider {
+  height: 1px;
+  background-color: #EBEEF5;
+  margin: 16px 0;
+  width: 100%;
+}

@@ -1,0 +1,135 @@
+.role-selector-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  min-width: 200px;
+}
+
+.role-selector-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  width: 100%;
+  min-width: 160px;
+  border: 1px solid #F5F7FA;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.2em;
+  letter-spacing: -0.02em;
+  color: #71747A;
+  transition: all 0.2s;
+}
+
+.role-selector-button:hover {
+  border-color: #A80000;
+}
+
+.role-selector-arrow {
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.role-selector-arrow.open {
+  transform: rotate(180deg);
+}
+
+.role-selector-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.24);
+  z-index: 998;
+}
+
+.role-selector-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px;
+  z-index: 999;
+  min-width: 440px;
+  max-width: 90vw;
+  width: auto;
+  box-sizing: border-box;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+}
+
+.role-selector-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 24px;
+}
+
+.role-selector-modal-title {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 0.9em;
+  letter-spacing: -0.04em;
+  color: #1D1E1F;
+  margin: 0;
+}
+
+.role-selector-modal-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.role-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 8px;
+  width: fit-content;
+  box-sizing: border-box;
+}
+
+.role-selector-option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #F5F7FA;
+  cursor: pointer;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 0.9em;
+  letter-spacing: -0.04em;
+  color: #71747A;
+  transition: all 0.2s;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.role-selector-option:hover {
+  background-color: #EBEEF5;
+}
+
+.role-selector-option.selected {
+  background-color: #4B4D52;
+  color: #FFFFFF;
+}

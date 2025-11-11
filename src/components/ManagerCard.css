@@ -1,0 +1,96 @@
+.manager-card {
+  background-color: #F5F7FA;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  position: relative;
+}
+
+.delete-manager-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+  color: #A80000;
+}
+
+.delete-manager-button:hover {
+  opacity: 0.7;
+}
+
+.delete-manager-button svg {
+  width: 20px;
+  height: 20px;
+}
+
+.manager-card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #4B4D52;
+}
+
+.manager-card-row:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.manager-card-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 0.9em;
+  letter-spacing: -0.04em;
+  color: #1D1E1F;
+}
+
+.manager-card-edit {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+
+.manager-card-edit:hover {
+  opacity: 0.7;
+}
+
+.manager-card-edit svg {
+  width: 24px;
+  height: 24px;
+}
+
+.manager-card-delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+
+.manager-card-delete:hover {
+  opacity: 0.7;
+}
+
+.manager-card-delete svg {
+  width: 24px;
+  height: 24px;
+}
+

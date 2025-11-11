@@ -1,0 +1,28 @@
+.filter-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.filter-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  padding: 16px 24px;
+  border: 2px solid #F5F7FA;
+  border-radius: 12px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-button:hover {
+  border-color: #A80000;
+}
+
+.filter-button:hover svg path,
+.filter-button:hover svg rect {
+  stroke: #A80000;
+}
+

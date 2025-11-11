@@ -1,0 +1,98 @@
+.telegram-users-page {
+  width: 100%;
+}
+
+.telegram-users-container {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  padding: 16px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.generate-link-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background-color: #A80000;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 0.9em;
+  letter-spacing: -0.04em;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.generate-link-button:hover {
+  background-color: #8B0000;
+}
+
+.telegram-users-toolbar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+}
+
+.telegram-users-generate-section {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: -4px;
+  margin-bottom: 8px;
+}
+
+.telegram-users-generate-section .generate-link-button {
+  padding: 8px 16px;
+  background-color: #A80000;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.2em;
+  letter-spacing: -0.02em;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.telegram-users-generate-section .generate-link-button:hover {
+  background-color: #8B0000;
+}
+
+.table-header-only {
+  width: 100%;
+  max-width: 100%;
+  background-color: #FFFFFF;
+  padding: 0;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.table-header-only .table-header-row {
+  border-bottom: none;
+  padding-bottom: 12px;
+  padding-top: 0;
+}
+
+.table-header-only .table-header-row.telegram-users .table-cell.header:first-child {
+  text-align: left;
+  padding-left: 0;
+}
+
+.table-header-only .table-header-row.telegram-users .table-cell.header:not(:first-child):not(:last-child) {
+  text-align: center;
+}
+
+.table-header-only .table-header-row.telegram-users .table-cell.header:last-child {
+  text-align: right;
+  padding-right: 0;
+}
+
