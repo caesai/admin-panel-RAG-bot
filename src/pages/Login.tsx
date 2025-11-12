@@ -20,7 +20,7 @@ const Login = () => {
       await login(email, password)
       navigate('/logs')
     } catch (err: any) {
-      setError('Неверный email или пароль')
+      setError(err.message || 'Неправильная почта или пароль')
     } finally {
       setLoading(false)
     }

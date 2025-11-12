@@ -5,7 +5,7 @@ interface AuthContextType {
   isAuthenticated: boolean
   token: string | null
   login: (email: string, password: string) => Promise<void>
-  logout: () => void
+  logout: () => Promise<void>
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -22,37 +22,83 @@ interface AuthProviderProps {
   children: ReactNode
 }
 
+interface StoredAuth {
+  token: string
+  expires_at: string
+}
+
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [token, setToken] = useState<string | null>(null)
 
   useEffect(() => {
     // Проверка токена при загрузке
-    const savedToken = localStorage.getItem('authToken')
-    if (savedToken) {
-      setToken(savedToken)
-      setIsAuthenticated(true)
-    }
+    checkToken()
   }, [])
+
+  const checkToken = () => {
+    const savedAuthData = localStorage.getItem('authData')
+    if (savedAuthData) {
+      try {
+        const authData: StoredAuth = JSON.parse(savedAuthData)
+        
+        // Проверяем, не истек ли токен
+        const expiresAt = new Date(authData.expires_at)
+        const now = new Date()
+        
+        if (expiresAt > now) {
+          setToken(authData.token)
+          setIsAuthenticated(true)
+        } else {
+          // Токен истек
+          clearAuth()
+        }
+      } catch {
+        clearAuth()
+      }
+    }
+  }
+
+  const clearAuth = () => {
+    localStorage.removeItem('authData')
+    localStorage.removeItem('authToken') // Старый ключ для обратной совместимости
+    setToken(null)
+    setIsAuthenticated(false)
+  }
 
   const login = async (email: string, password: string) => {
     try {
       const response = await authService.login(email, password)
-      const authToken = response.token
       
-      localStorage.setItem('authToken', authToken)
-      setToken(authToken)
+      const authData: StoredAuth = {
+        token: response.token,
+        expires_at: response.expires_at,
+      }
+      
+      // Сохраняем данные авторизации
+      localStorage.setItem('authData', JSON.stringify(authData))
+      // Для обратной совместимости с api.ts
+      localStorage.setItem('authToken', response.token)
+      
+      setToken(response.token)
       setIsAuthenticated(true)
     } catch (error) {
       throw error
     }
   }
 
-  const logout = () => {
-    localStorage.removeItem('authToken')
-    setToken(null)
-    setIsAuthenticated(false)
-    window.location.href = '/login'
+  const logout = async () => {
+    try {
+      if (token) {
+        await authService.logout(token)
+      }
+    } catch (error) {
+      // Даже если запрос logout не удался, все равно очищаем локальные данные
+      console.error('Logout error:', error)
+    } finally {
+      clearAuth()
+      window.location.href = '/login'
+    }
   }
 
   return (
