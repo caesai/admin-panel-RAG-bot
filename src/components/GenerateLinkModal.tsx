@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { telegramUsersService, Role } from '../services/telegramUsersService'
+import { copyToClipboard } from '../utils/clipboard'
 import './GenerateLinkModal.css'
 
 interface GenerateLinkModalProps {
@@ -39,11 +40,11 @@ const GenerateLinkModal: React.FC<GenerateLinkModalProps> = ({ roles, onClose, o
   }
 
   const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(generatedLink)
+    const success = await copyToClipboard(generatedLink)
+    if (success) {
       alert('Ссылка скопирована в буфер обмена')
-    } catch (err) {
-      alert('Ошибка при копировании ссылки')
+    } else {
+      alert('Ошибка при копировании ссылки. Скопируйте вручную.')
     }
   }
 

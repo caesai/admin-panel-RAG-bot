@@ -136,7 +136,13 @@ docker-compose up -d --build
 **WebStorm/IntelliJ:**
 - `File` → `Invalidate Caches...` → `Invalidate and Restart`
 
-Подробнее см. [TROUBLESHOOTING.md](./TROUBLESHOOTING.md)
+### Проблемы с копированием в буфер обмена
+
+Если на удаленном сервере не работает копирование ссылок, убедитесь что:
+- Сайт работает через **HTTPS** (Clipboard API требует безопасного соединения)
+- Если HTTPS недоступен, приложение использует fallback метод (execCommand)
+
+Приложение автоматически определяет доступность Clipboard API и использует совместимый метод.
 
 ## Лицензия
 

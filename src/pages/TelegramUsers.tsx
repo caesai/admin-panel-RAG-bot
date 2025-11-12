@@ -5,6 +5,7 @@ import GenerateLinkModal from '../components/GenerateLinkModal'
 import SearchBar from '../components/SearchBar'
 import Pagination from '../components/Pagination'
 import Loader from '../components/Loader'
+import { copyToClipboard } from '../utils/clipboard'
 import './TelegramUsers.css'
 
 const TelegramUsers = () => {
@@ -72,8 +73,12 @@ const TelegramUsers = () => {
   const handleGenerateLink = async (roleId: string) => {
     try {
       const result = await telegramUsersService.generateToken(roleId)
-      navigator.clipboard.writeText(result.link)
-      alert(`Ссылка скопирована в буфер обмена:\n${result.link}`)
+      const success = await copyToClipboard(result.link)
+      if (success) {
+        alert(`Ссылка скопирована в буфер обмена:\n${result.link}`)
+      } else {
+        alert(`Ссылка сгенерирована (не удалось скопировать):\n${result.link}`)
+      }
       return result.link
     } catch (err: any) {
       alert(err.message || 'Ошибка при генерации ссылки')
