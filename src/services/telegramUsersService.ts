@@ -1,4 +1,4 @@
-import { apiRequest, apiRequestWithEnvToken } from './api'
+import { apiRequest } from './api'
 
 export interface TelegramUser {
   id: string
@@ -80,7 +80,7 @@ export const telegramUsersService = {
   },
 
   async generateToken(roleId: string): Promise<GenerateTokenResponse> {
-    const response = await apiRequestWithEnvToken('/webhook/generateToken', {
+    const response = await apiRequest('/webhook/generateToken', {
       method: 'POST',
       body: JSON.stringify({ role_id: roleId }),
     })

@@ -37,7 +37,15 @@ export const logsService = {
     try {
       const response = await apiRequest(`/webhook/logs/manager-changes?page=${page}&page_size=${pageSize}`)
       
-      if (!response || !response.data || !Array.isArray(response.data)) {
+      // Если ответ пустой или null, возвращаем пустой массив
+      if (!response) {
+        return { 
+          data: [], 
+          pagination: { page, page_size: pageSize, total: 0, total_pages: 0 }
+        }
+      }
+      
+      if (!response.data || !Array.isArray(response.data)) {
         throw new Error('Неверный формат ответа от сервера: отсутствует массив data')
       }
       
@@ -55,7 +63,15 @@ export const logsService = {
     try {
       const response = await apiRequest(`/webhook/logs/user-requests?page=${page}&page_size=${pageSize}`)
       
-      if (!response || !response.data || !Array.isArray(response.data)) {
+      // Если ответ пустой или null, возвращаем пустой массив
+      if (!response) {
+        return { 
+          data: [], 
+          pagination: { page, page_size: pageSize, total: 0, total_pages: 0 }
+        }
+      }
+      
+      if (!response.data || !Array.isArray(response.data)) {
         throw new Error('Неверный формат ответа от сервера: отсутствует массив data')
       }
       
@@ -73,7 +89,15 @@ export const logsService = {
     try {
       const response = await apiRequest(`/webhook/logs/confidential?page=${page}&page_size=${pageSize}`)
       
-      if (!response || !response.data || !Array.isArray(response.data)) {
+      // Если ответ пустой или null, возвращаем пустой массив
+      if (!response) {
+        return { 
+          data: [], 
+          pagination: { page, page_size: pageSize, total: 0, total_pages: 0 }
+        }
+      }
+      
+      if (!response.data || !Array.isArray(response.data)) {
         throw new Error('Неверный формат ответа от сервера: отсутствует массив data')
       }
       

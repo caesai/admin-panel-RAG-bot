@@ -4,6 +4,7 @@ import { authService } from '../services/authService'
 interface AuthContextType {
   isAuthenticated: boolean
   token: string | null
+  isLoading: boolean
   login: (email: string, password: string) => Promise<void>
   logout: () => Promise<void>
 }
@@ -30,6 +31,7 @@ interface StoredAuth {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [token, setToken] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     // Проверка токена при загрузке
@@ -49,13 +51,18 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         if (expiresAt > now) {
           setToken(authData.token)
           setIsAuthenticated(true)
+          setIsLoading(false)
         } else {
           // Токен истек
           clearAuth()
+          setIsLoading(false)
         }
       } catch {
         clearAuth()
+        setIsLoading(false)
       }
+    } else {
+      setIsLoading(false)
     }
   }
 
@@ -102,9 +109,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, token, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, token, isLoading, login, logout }}>
       {children}
     </AuthContext.Provider>
   )
 }
-
