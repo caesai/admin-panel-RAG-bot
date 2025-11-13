@@ -157,7 +157,7 @@ const Logs = () => {
             {/* Тело таблицы */}
             {renderTableBody()}
             
-            {!loading && !error && totalPages > 1 && (
+            {totalPages > 0 && (
               <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}

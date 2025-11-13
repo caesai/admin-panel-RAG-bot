@@ -148,7 +148,7 @@ const TelegramUsers = () => {
               onRestaurantChange={handleRestaurantChange}
             />
             
-            {!loading && !error && totalPages > 1 && (
+            {totalPages > 0 && (
               <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}
