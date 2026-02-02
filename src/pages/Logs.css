@@ -100,3 +100,23 @@
   text-align: right;
 }
 
+/* Убираем border-radius для таблиц в логах для точного выравнивания */
+.logs-container .table-container {
+  border-radius: 0;
+}
+
+/* Фиксированные колонки для точного выравнивания заголовков и данных */
+.logs-container .table-header-only .table-header-row.requests,
+.logs-container .table-row.requests {
+  grid-template-columns: 100px 160px 140px 140px 1fr;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.logs-container .table-header-only .table-header-row.confidential,
+.logs-container .table-row.confidential {
+  grid-template-columns: 160px 140px 140px 1fr;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+

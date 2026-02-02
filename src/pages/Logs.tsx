@@ -3,17 +3,15 @@ import { logsService } from '../services/logsService'
 import Tabs from '../components/Tabs'
 import LogsTable from '../components/LogsTable'
 import ConfidentialTable from '../components/ConfidentialTable'
-import ManagerChangesTable from '../components/ManagerChangesTable'
 import SearchBar from '../components/SearchBar'
 import Pagination from '../components/Pagination'
 import Loader from '../components/Loader'
 import './Logs.css'
 
-type TabType = 'managerChanges' | 'requests' | 'confidential'
+type TabType = 'requests' | 'confidential'
 
 const Logs = () => {
   const [activeTab, setActiveTab] = useState<TabType>('confidential')
-  const [managerChanges, setManagerChanges] = useState<any[]>([])
   const [requests, setRequests] = useState<any[]>([])
   const [confidential, setConfidential] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
@@ -38,11 +36,7 @@ const Logs = () => {
     setLoading(true)
     setError(null)
     try {
-      if (activeTab === 'managerChanges') {
-        const response = await logsService.getManagerChanges(page, pageSize)
-        setManagerChanges(response.data)
-        setTotalPages(response.pagination.total_pages)
-      } else if (activeTab === 'requests') {
+      if (activeTab === 'requests') {
         const response = await logsService.getUserRequests(page, pageSize)
         setRequests(response.data)
         setTotalPages(response.pagination.total_pages)
@@ -67,7 +61,6 @@ const Logs = () => {
   }
 
   const tabs = [
-    { id: 'managerChanges', label: 'Изменения менеджеров' },
     { id: 'requests', label: 'Запросы пользователей' },
     { id: 'confidential', label: 'Срабатывания «Конфиденциально»' },
   ]
@@ -85,18 +78,7 @@ const Logs = () => {
 
   // Получаем заголовки таблицы в зависимости от активной вкладки
   const renderTableHeader = () => {
-    if (activeTab === 'managerChanges') {
-      return (
-        <div className="table-header-only">
-          <div className="table-header-row manager-changes">
-            <div className="table-cell header">Дата и время</div>
-            <div className="table-cell header">Кто изменил</div>
-            <div className="table-cell header">Что изменил</div>
-            <div className="table-cell header">Детали изменения</div>
-          </div>
-        </div>
-      )
-    } else if (activeTab === 'requests') {
+    if (activeTab === 'requests') {
       return (
         <div className="table-header-only">
           <div className="table-header-row requests">
@@ -113,7 +95,8 @@ const Logs = () => {
         <div className="table-header-only">
           <div className="table-header-row confidential">
             <div className="table-cell header">Дата и время</div>
-            <div className="table-cell header">Пользователь Telegram</div>
+            <div className="table-cell header">Telegram ID</div>
+            <div className="table-cell header">Username</div>
             <div className="table-cell header">Текст запроса</div>
           </div>
         </div>
@@ -123,9 +106,7 @@ const Logs = () => {
 
   // Получаем тело таблицы без заголовков
   const renderTableBody = () => {
-    if (activeTab === 'managerChanges') {
-      return <ManagerChangesTable data={filterData(managerChanges)} showHeader={false} />
-    } else if (activeTab === 'requests') {
+    if (activeTab === 'requests') {
       return <LogsTable data={filterData(requests)} showHeader={false} />
     } else {
       return <ConfidentialTable data={filterData(confidential)} showHeader={false} />
@@ -145,7 +126,7 @@ const Logs = () => {
 
         {/* Строка поиска */}
         <div className="logs-toolbar">
-          <SearchBar value={searchQuery} onChange={setSearchQuery} placeholder="Поиск" />
+          <SearchBar value={searchQuery} onChange={setSearchQuery} placeholder="Поиск" showFilterButtons={false} />
         </div>
 
         {loading ? (

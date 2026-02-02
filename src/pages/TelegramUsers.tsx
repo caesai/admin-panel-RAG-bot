@@ -70,6 +70,19 @@ const TelegramUsers = () => {
     }
   }
 
+  const handleDeleteUser = async (telegramId: string) => {
+    if (!confirm('Вы уверены, что хотите удалить этого пользователя?')) {
+      return
+    }
+    try {
+      await telegramUsersService.deleteUser(telegramId)
+      alert('Пользователь успешно удалён')
+      fetchData()
+    } catch (err: any) {
+      alert(err.message || 'Ошибка при удалении пользователя')
+    }
+  }
+
   const handleGenerateLink = async (roleId: string) => {
     try {
       const result = await telegramUsersService.generateToken(roleId)
@@ -97,16 +110,6 @@ const TelegramUsers = () => {
     })
   }
 
-  const handleRestaurantChange = (userId: string, restaurant: string | string[]) => {
-    // Псевдо-изменение ресторана (локальное хранение)
-    const restaurants = Array.isArray(restaurant) ? restaurant : (restaurant ? [restaurant] : [])
-    setUsers(users.map(user => 
-      (user.id === userId || user.telegram_id === userId) 
-        ? { ...user, restaurants, restaurant: Array.isArray(restaurant) ? restaurant.join(', ') : restaurant } 
-        : user
-    ))
-  }
-
   return (
     <div className="telegram-users-page">
       <div className="telegram-users-container">
@@ -116,7 +119,7 @@ const TelegramUsers = () => {
             <div className="table-cell header">Telegram ID</div>
             <div className="table-cell header">UserName</div>
             <div className="table-cell header">Роль</div>
-            <div className="table-cell header">Ресторан</div>
+            <div className="table-cell header">Действия</div>
           </div>
         </div>
 
@@ -145,7 +148,7 @@ const TelegramUsers = () => {
               data={filterData(users)}
               roles={roles}
               onRoleChange={handleRoleChange}
-              onRestaurantChange={handleRestaurantChange}
+              onDeleteUser={handleDeleteUser}
             />
             
             {totalPages > 0 && (

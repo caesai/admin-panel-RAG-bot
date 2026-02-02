@@ -97,5 +97,15 @@ export const telegramUsersService = {
     )
     return response
   },
+
+  async deleteUser(telegramId: string): Promise<{ success: boolean }> {
+    const response = await apiRequest(
+      `/webhook/699c6252-1425-4cbc-8082-c03f7609251a/tg-users/${telegramId}`,
+      {
+        method: 'DELETE',
+      }
+    )
+    return response
+  },
 }
 

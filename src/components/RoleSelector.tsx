@@ -44,19 +44,21 @@ const RoleSelector: React.FC<RoleSelectorProps> = ({ value, roles, onChange }) =
               </button>
             </div>
             <div className="role-selector-grid">
-              {roles.map((role) => (
-                <button
-                  key={role.uuid}
-                  type="button"
-                  className={`role-selector-option ${value === role.name ? 'selected' : ''}`}
-                  onClick={() => {
-                    onChange(role.name)
-                    setIsOpen(false)
-                  }}
-                >
-                  {role.name}
-                </button>
-              ))}
+              {roles
+                .filter((role) => role && role.name && role.name.trim() !== '')
+                .map((role) => (
+                  <button
+                    key={role.uuid}
+                    type="button"
+                    className={`role-selector-option ${value === role.name ? 'selected' : ''}`}
+                    onClick={() => {
+                      onChange(role.name)
+                      setIsOpen(false)
+                    }}
+                  >
+                    {role.name}
+                  </button>
+                ))}
             </div>
           </div>
         </>

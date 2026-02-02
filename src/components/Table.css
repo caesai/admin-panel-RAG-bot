@@ -27,11 +27,11 @@
 
 
 .table-header-row.requests {
-  grid-template-columns: minmax(100px, 104px) minmax(180px, 191px) minmax(150px, 176px) minmax(200px, 250px) minmax(300px, 1fr);
+  grid-template-columns: 100px 160px 140px 140px 1fr;
 }
 
 .table-header-row.confidential {
-  grid-template-columns: minmax(143px, 191px) minmax(250px, 250px) minmax(300px, 1fr);
+  grid-template-columns: 160px 140px 140px 1fr;
 }
 
 .table-header-row.users {
@@ -203,11 +203,11 @@
 }
 
 .table-row.requests {
-  grid-template-columns: minmax(100px, 104px) minmax(180px, 191px) minmax(150px, 176px) minmax(200px, 250px) minmax(300px, 1fr);
+  grid-template-columns: 100px 160px 140px 140px 1fr;
 }
 
 .table-row.confidential {
-  grid-template-columns: minmax(143px, 191px) minmax(250px, 250px) minmax(300px, 1fr);
+  grid-template-columns: 160px 140px 140px 1fr;
 }
 
 .table-row.users {
@@ -358,5 +358,34 @@
 
 .role-select:hover {
   border-color: #A80000;
+}
+
+/* Кнопка удаления пользователя */
+.delete-user-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid #F5F7FA;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  color: #71747A;
+  transition: all 0.2s;
+}
+
+.delete-user-button:hover {
+  border-color: #A80000;
+  color: #A80000;
+  background-color: #FFF5F5;
+}
+
+.table-row.telegram-users .table-cell.action-cell {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 8px 12px;
 }
 

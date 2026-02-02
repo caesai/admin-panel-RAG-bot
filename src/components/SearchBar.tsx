@@ -5,9 +5,10 @@ interface SearchBarProps {
   value: string
   onChange: (value: string) => void
   placeholder?: string
+  showFilterButtons?: boolean
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ value, onChange, placeholder = 'Поиск' }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ value, onChange, placeholder = 'Поиск', showFilterButtons = true }) => {
   return (
     <div className="search-bar-container">
       <div className="search-bar">
@@ -23,7 +24,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ value, onChange, placeholder = '�
           className="search-input"
         />
       </div>
-      <FilterButtons />
+      {showFilterButtons && <FilterButtons />}
     </div>
   )
 }

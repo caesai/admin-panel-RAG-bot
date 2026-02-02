@@ -1,27 +1,20 @@
 import { Role } from '../services/telegramUsersService'
 import RoleSelector from './RoleSelector'
-import RestaurantSelectorDropdown from './RestaurantSelectorDropdown'
 import './Table.css'
 
 interface TelegramUsersTableProps {
   data: any[]
   roles: Role[]
   onRoleChange: (userId: string, roleId: string) => void
-  onRestaurantChange?: (userId: string, restaurant: string | string[]) => void
+  onDeleteUser?: (userId: string) => void
 }
 
 const TelegramUsersTable: React.FC<TelegramUsersTableProps> = ({ 
   data, 
   roles, 
   onRoleChange,
-  onRestaurantChange
+  onDeleteUser
 }) => {
-  const handleRestaurantChange = (userId: string, restaurant: string | string[]) => {
-    if (onRestaurantChange) {
-      onRestaurantChange(userId, restaurant)
-    }
-  }
-
   return (
     <div className="table-container">
       <div className="table-body">
@@ -40,12 +33,16 @@ const TelegramUsersTable: React.FC<TelegramUsersTableProps> = ({
                     onChange={(newRole) => onRoleChange(row.telegram_id || row.id, newRole)}
                   />
                 </div>
-                <div className="table-cell restaurant-cell">
-                  <RestaurantSelectorDropdown
-                    value={Array.isArray(row.restaurants) ? row.restaurants : (row.restaurant ? [row.restaurant] : [])}
-                    onChange={(restaurant) => handleRestaurantChange(row.id || row.telegram_id, restaurant)}
-                    multiple={true}
-                  />
+                <div className="table-cell action-cell">
+                  <button
+                    className="delete-user-button"
+                    onClick={() => onDeleteUser && onDeleteUser(row.telegram_id || row.id)}
+                    title="Удалить пользователя"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path d="M3 5H17M8 5V3C8 2.44772 8.44772 2 9 2H11C11.5523 2 12 2.44772 12 3V5M15 5V17C15 17.5523 14.5523 18 14 18H6C5.44772 18 5 17.5523 5 17V5H15Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
                 </div>
               </div>
             ))}
@@ -54,7 +51,7 @@ const TelegramUsersTable: React.FC<TelegramUsersTableProps> = ({
                 <div className="table-cell header">Telegram ID</div>
                 <div className="table-cell header">UserName</div>
                 <div className="table-cell header">Роль</div>
-                <div className="table-cell header">Ресторан</div>
+                <div className="table-cell header">Действия</div>
               </div>
             </div>
           </>
