@@ -1,0 +1,79 @@
+.tg-users-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tg-users-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.tg-users-table thead th {
+  text-align: left;
+  padding: 12px 16px;
+  font-weight: 500;
+  font-size: 16px;
+  color: #4B4D52;
+  border-bottom: 1px solid #F5F7FA;
+}
+
+.tg-users-table thead th:last-child {
+  text-align: center;
+  width: 80px;
+}
+
+.tg-users-table thead th:nth-child(3) {
+  width: 180px;
+}
+
+.tg-users-table tbody td {
+  padding: 12px 16px;
+  font-weight: 500;
+  font-size: 16px;
+  color: #71747A;
+  border-bottom: 1px solid #F5F7FA;
+  vertical-align: middle;
+}
+
+.tg-users-table tbody tr.even {
+  background-color: #F5F7FA;
+}
+
+.tg-users-table tbody td:last-child {
+  text-align: center;
+  width: 80px;
+}
+
+.tg-users-table tbody td:nth-child(3) {
+  width: 180px;
+  padding: 8px 16px;
+}
+
+.tg-users-empty {
+  text-align: center;
+  padding: 32px;
+  color: #71747A;
+}
+
+/* Кнопка удаления */
+.delete-user-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid #F5F7FA;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  color: #71747A;
+  transition: all 0.2s;
+}
+
+.delete-user-button:hover {
+  border-color: #A80000;
+  color: #A80000;
+  background-color: #FFF5F5;
+}

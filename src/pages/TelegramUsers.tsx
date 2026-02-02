@@ -75,7 +75,14 @@ const TelegramUsers = () => {
       return
     }
     try {
-      await telegramUsersService.deleteUser(telegramId)
+      // Находим роль "Гость" и присваиваем её пользователю
+      const guestRole = roles.find(r => r.name === 'Гость')
+      if (!guestRole) {
+        alert('Роль "Гость" не найдена')
+        return
+      }
+      
+      await telegramUsersService.updateUserRole(telegramId, guestRole.uuid)
       alert('Пользователь успешно удалён')
       fetchData()
     } catch (err: any) {
@@ -100,32 +107,28 @@ const TelegramUsers = () => {
   }
 
   const filterData = (data: TelegramUser[]) => {
-    if (!searchQuery.trim()) return data
+    // Сначала фильтруем пользователей с ролью "Гость" - они не отображаются
+    let filtered = data.filter((item) => item.role !== 'Гость')
     
-    const query = searchQuery.toLowerCase()
-    return data.filter((item) => {
-      return Object.values(item).some((value) =>
-        String(value).toLowerCase().includes(query)
-      )
-    })
+    // Затем применяем поисковый фильтр
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase()
+      filtered = filtered.filter((item) => {
+        return Object.values(item).some((value) =>
+          String(value).toLowerCase().includes(query)
+        )
+      })
+    }
+    
+    return filtered
   }
 
   return (
     <div className="telegram-users-page">
       <div className="telegram-users-container">
-        {/* Заголовки таблицы */}
-        <div className="table-header-only">
-          <div className="table-header-row telegram-users">
-            <div className="table-cell header">Telegram ID</div>
-            <div className="table-cell header">UserName</div>
-            <div className="table-cell header">Роль</div>
-            <div className="table-cell header">Действия</div>
-          </div>
-        </div>
-
         {/* Строка поиска */}
         <div className="telegram-users-toolbar">
-          <SearchBar value={searchQuery} onChange={setSearchQuery} placeholder="Поиск" />
+          <SearchBar value={searchQuery} onChange={setSearchQuery} placeholder="Поиск" showFilterButtons={false} />
         </div>
 
         {/* Кнопка генерации ссылки */}
