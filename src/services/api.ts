@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://primary-production-9c58b.up.railway.app'
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://dtcopywriter.ru'
 
 export async function apiRequest(endpoint: string, options: RequestInit = {}) {
   const controller = new AbortController()
