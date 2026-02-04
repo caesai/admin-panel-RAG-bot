@@ -66,14 +66,24 @@ const Logs = () => {
   ]
 
   const filterData = (data: any[]) => {
-    if (!searchQuery.trim()) return data
-    
-    const query = searchQuery.toLowerCase()
-    return data.filter((item) => {
-      return Object.values(item).some((value) =>
-        String(value).toLowerCase().includes(query)
-      )
+    // Сортируем по дате: новые сверху
+    let sortedData = [...data].sort((a, b) => {
+      const dateA = new Date(a.created_at || a.timestamp || 0).getTime()
+      const dateB = new Date(b.created_at || b.timestamp || 0).getTime()
+      return dateB - dateA // Новые сверху
     })
+    
+    // Применяем поисковый фильтр
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase()
+      sortedData = sortedData.filter((item) => {
+        return Object.values(item).some((value) =>
+          String(value).toLowerCase().includes(query)
+        )
+      })
+    }
+    
+    return sortedData
   }
 
   // Получаем заголовки таблицы в зависимости от активной вкладки

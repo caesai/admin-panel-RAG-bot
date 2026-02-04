@@ -119,3 +119,22 @@
   padding-left: 24px;
   padding-right: 24px;
 }
+
+/* Перенос текста в колонке "Текст запроса" */
+.logs-container .table-row .table-cell.text-request {
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.4em;
+  max-width: 100%;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+/* Выравнивание ячеек по верху при многострочном тексте */
+.logs-container .table-row {
+  align-items: flex-start;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
